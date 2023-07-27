@@ -21,23 +21,25 @@ class _CurrencyConverterMaterialPageState
     // une varaible pour les bordures
     final myborder = OutlineInputBorder(
       borderSide: BorderSide(
-        width: 2.0,
+        width: 1.0,
         style: BorderStyle.solid,
+        color: Color(0xff18DAA3),
       ),
       borderRadius: BorderRadius.all(Radius.circular(50)),
     );
 
     return Scaffold(
-      backgroundColor: Colors.blueGrey,
+      backgroundColor: const Color(0xff191C32),
       appBar: AppBar(
         title: const Text(
           "Convertion App",
           style: TextStyle(
             fontSize: 20,
+            color: Color(0xff18DAA3),
           ),
         ),
         elevation: 0,
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: const Color(0xff191C32),
       ),
       body: Center(
         child: Padding(
@@ -48,26 +50,27 @@ class _CurrencyConverterMaterialPageState
               Text(
                 "€ ${resultConvert != 0 ? resultConvert.toStringAsFixed(2) : resultConvert.toStringAsFixed(0)}", // toStringAsFixed le nombre de chiffre après la virgule
                 style: const TextStyle(
-                  color: Colors.white,
+                  color: Color(0xff18DAA3),
                   fontSize: 55,
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              const SizedBox(height: 10),
               TextField(
                 // recupérons les valeurs rentré dans le champs
                 controller: textEditingController,
                 style: const TextStyle(
-                  color: Colors.black,
+                  color: Color(0xff18DAA3),
                 ),
                 decoration: InputDecoration(
                   hintText: "Entrer votre montant FCFA",
                   hintStyle: const TextStyle(
-                    color: Colors.black45,
+                    color: Color(0xff18DAA3),
                   ),
                   prefixIcon: const Icon(Icons.money),
-                  prefixIconColor: Colors.black45,
+                  prefixIconColor: const Color(0xff18DAA3),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: const Color(0xff193843),
                   focusedBorder: myborder,
                   enabledBorder: myborder,
                 ),
@@ -75,7 +78,7 @@ class _CurrencyConverterMaterialPageState
                   decimal: true,
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 13),
               TextButton(
                 onPressed: () {
                   setState(() {
@@ -84,7 +87,7 @@ class _CurrencyConverterMaterialPageState
                   });
                 },
                 style: TextButton.styleFrom(
-                  backgroundColor: Colors.black,
+                  backgroundColor: const Color(0xff763135),
                   foregroundColor: Colors.white,
                   minimumSize: const Size(double.infinity, 50),
                   shape: const RoundedRectangleBorder(
@@ -94,7 +97,14 @@ class _CurrencyConverterMaterialPageState
                   ),
                 ),
                 child: const Text("Convertir"),
-              )
+              ),
+              const SizedBox(height: 15),
+              const Text(
+                "© Copyright - Jeremi Koloma",
+                style: TextStyle(
+                  color: Color(0xff91939D),
+                ),
+              ),
             ],
           ),
         ),
