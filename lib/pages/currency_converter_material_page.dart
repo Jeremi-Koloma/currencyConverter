@@ -14,20 +14,17 @@ class _CurrencyConverterMaterialPageState
   double resultConvert = 0;
   // pour avoir accès à la valeur input(le text tapé)
   final TextEditingController textEditingController = TextEditingController();
-
+  // une varaible pour les bordures
+  static const myborder = OutlineInputBorder(
+    borderSide: BorderSide(
+      width: 1.0,
+      style: BorderStyle.solid,
+      color: Color(0xff18DAA3),
+    ),
+    borderRadius: BorderRadius.all(Radius.circular(50)),
+  );
   @override
   Widget build(BuildContext context) {
-    print("-- recompilation ---");
-    // une varaible pour les bordures
-    final myborder = OutlineInputBorder(
-      borderSide: BorderSide(
-        width: 1.0,
-        style: BorderStyle.solid,
-        color: Color(0xff18DAA3),
-      ),
-      borderRadius: BorderRadius.all(Radius.circular(50)),
-    );
-
     return Scaffold(
       backgroundColor: const Color(0xff191C32),
       appBar: AppBar(
@@ -62,15 +59,15 @@ class _CurrencyConverterMaterialPageState
                 style: const TextStyle(
                   color: Color(0xff18DAA3),
                 ),
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: "Entrer votre montant FCFA",
-                  hintStyle: const TextStyle(
+                  hintStyle: TextStyle(
                     color: Color(0xff18DAA3),
                   ),
-                  prefixIcon: const Icon(Icons.money),
-                  prefixIconColor: const Color(0xff18DAA3),
+                  prefixIcon: Icon(Icons.money),
+                  prefixIconColor: Color(0xff18DAA3),
                   filled: true,
-                  fillColor: const Color(0xff193843),
+                  fillColor: Color(0xff193843),
                   focusedBorder: myborder,
                   enabledBorder: myborder,
                 ),

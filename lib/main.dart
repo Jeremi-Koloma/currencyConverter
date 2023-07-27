@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/pages/currency_converter_material_page.dart';
+import 'package:my_flutter_app/pages/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: CurrencyConverterMaterialPage(),
+      home: SplashScreen(),
     );
   }
 }
