@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
 
-class CurrencyConverterMaterialPage extends StatelessWidget {
+class CurrencyConverterMaterialPage extends StatefulWidget {
   const CurrencyConverterMaterialPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    // valeurs initiale de la somme à convertir
-    int resultConvert = 0;
-    // pour recupération de la valeur input
-    final TextEditingController textEditingController = TextEditingController();
+  State<CurrencyConverterMaterialPage> createState() =>
+      _CurrencyConverterMaterialPageState();
+}
 
+class _CurrencyConverterMaterialPageState
+    extends State<CurrencyConverterMaterialPage> {
+  // valeurs initiale de la somme à convertir
+  double resultConvert = 0;
+  // pour avoir accès à la valeur input(le text tapé)
+  final TextEditingController textEditingController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    print("-- recompilation ---");
     // une varaible pour les bordures
     final myborder = OutlineInputBorder(
       borderSide: BorderSide(
@@ -32,21 +40,22 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
         backgroundColor: Colors.blueGrey,
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              "0",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 55,
-                fontWeight: FontWeight.bold,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "€ ${resultConvert != 0 ? resultConvert.toStringAsFixed(2) : resultConvert.toStringAsFixed(0)}", // toStringAsFixed le nombre de chiffre après la virgule
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 55,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: TextField(
+              TextField(
                 // recupérons les valeurs rentré dans le champs
+                controller: textEditingController,
                 style: const TextStyle(
                   color: Colors.black,
                 ),
@@ -55,7 +64,7 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
                   hintStyle: const TextStyle(
                     color: Colors.black45,
                   ),
-                  prefixIcon: const Icon(Icons.euro_outlined),
+                  prefixIcon: const Icon(Icons.money),
                   prefixIconColor: Colors.black45,
                   filled: true,
                   fillColor: Colors.white,
@@ -66,11 +75,14 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
                   decimal: true,
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: TextButton(
-                onPressed: () {},
+              const SizedBox(height: 10),
+              TextButton(
+                onPressed: () {
+                  setState(() {
+                    resultConvert =
+                        double.parse(textEditingController.text) * 0.00152073;
+                  });
+                },
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.black,
                   foregroundColor: Colors.white,
@@ -82,9 +94,9 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
                   ),
                 ),
                 child: const Text("Convertir"),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
