@@ -23,6 +23,14 @@ class _CurrencyConverterMaterialPageState
     ),
     borderRadius: BorderRadius.all(Radius.circular(50)),
   );
+
+  // Pour detruire l'object
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
